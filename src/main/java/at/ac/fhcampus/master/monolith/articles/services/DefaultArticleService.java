@@ -1,9 +1,11 @@
 package at.ac.fhcampus.master.monolith.articles.services;
 
 import at.ac.fhcampus.master.monolith.articles.dtos.ArticleDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DefaultArticleService implements ArticleService {
 
     @Override
