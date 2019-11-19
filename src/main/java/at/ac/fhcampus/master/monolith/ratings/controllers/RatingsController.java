@@ -1,6 +1,7 @@
 package at.ac.fhcampus.master.monolith.ratings.controllers;
 
-import at.ac.fhcampus.master.monolith.ratings.RatingDto;
+import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
+import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.services.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public final class RatingsController {
     private final RatingService ratingService;
 
     @PostMapping(RATE_URL)
-    public void rate(@RequestBody RatingDto ratingDto) {
-        this.ratingService.rate(ratingDto);
+    public RatingDto rate(@RequestBody RatingDto ratingDto) {
+        return this.ratingService.rate(ratingDto);
     }
 }

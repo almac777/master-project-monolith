@@ -1,7 +1,7 @@
 package at.ac.fhcampus.master.monolith.ratings.services;
 
-import at.ac.fhcampus.master.monolith.ratings.RatingDto;
+import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
 
 public interface RatingService {
-    void rate(RatingDto ratingDto);
+    RatingDto rate(RatingDto ratingDto);
 }

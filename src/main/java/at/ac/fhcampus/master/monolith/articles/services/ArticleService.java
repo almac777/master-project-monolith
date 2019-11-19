@@ -3,6 +3,7 @@ package at.ac.fhcampus.master.monolith.articles.services;
 import at.ac.fhcampus.master.monolith.articles.dtos.ArticleDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ArticleService {
 
