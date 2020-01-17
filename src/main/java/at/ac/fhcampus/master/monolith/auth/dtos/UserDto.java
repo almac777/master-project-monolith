@@ -1,6 +1,5 @@
 package at.ac.fhcampus.master.monolith.auth.dtos;
 
-import at.ac.fhcampus.master.monolith.auth.entities.Authority;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
@@ -22,6 +21,6 @@ public class UserDto {
     private boolean isEnabled;
 
     @Singular
-    private List<AuthorityDto> authorities;
+    private List<RoleDto> roles;
 
 }

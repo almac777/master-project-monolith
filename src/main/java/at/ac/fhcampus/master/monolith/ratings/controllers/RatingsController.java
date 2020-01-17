@@ -1,7 +1,6 @@
 package at.ac.fhcampus.master.monolith.ratings.controllers;
 
 import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
-import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.services.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
