@@ -7,7 +7,9 @@ import at.ac.fhcampus.master.monolith.auth.entities.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -39,7 +41,9 @@ public class UserDtoToEntityConverter implements Converter<UserDto, User> {
 
     List<Role> convert(List<RoleDto> authorities) {
         AuthorityDtoToEntityConverter converter = new AuthorityDtoToEntityConverter();
-        return authorities.stream()
+        return Optional.ofNullable(authorities)
+                .orElse(new LinkedList<>())
+                .stream()
                 .map(converter::convert)
                 .collect(Collectors.toList());
     }

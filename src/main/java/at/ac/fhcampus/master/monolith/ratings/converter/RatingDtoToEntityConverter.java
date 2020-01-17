@@ -8,6 +8,7 @@ import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
 import at.ac.fhcampus.master.monolith.auth.entities.User;
 import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
 import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
+import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -24,11 +25,11 @@ public class RatingDtoToEntityConverter implements Converter<RatingDto, Rating> 
                 .build();
     }
 
-    private Article convertArticle(ArticleDto article) {
+    private Article convertArticle(@NonNull ArticleDto article) {
         return new ArticleDtoToEntityConverter().convert(article);
     }
 
-    private User convertUser(UserDto userDto) {
+    private User convertUser(@NonNull UserDto userDto) {
         return new UserDtoToEntityConverter().convert(userDto);
     }
 }

@@ -14,7 +14,6 @@ Content-Type: application/json
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 
 {
-  "id": null,
   "url": "https://ieeexplore.ieee.org/abstract/document/7436659"
 }
 
