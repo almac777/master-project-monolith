@@ -1,8 +1,8 @@
 package at.ac.fhcampus.master.monolith.auth.converters;
 
-import at.ac.fhcampus.master.monolith.auth.dtos.AuthorityDto;
+import at.ac.fhcampus.master.monolith.auth.dtos.RoleDto;
 import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
-import at.ac.fhcampus.master.monolith.auth.entities.Authority;
+import at.ac.fhcampus.master.monolith.auth.entities.Role;
 import at.ac.fhcampus.master.monolith.auth.entities.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 @Component
 public class UserToDtoConverter implements Converter<User, UserDto> {
 
-    public class AuthorityToDtoConverter implements Converter<Authority, AuthorityDto> {
+    public class AuthorityToDtoConverter implements Converter<Role, RoleDto> {
         @Override
-        public AuthorityDto convert(Authority source) {
-            return AuthorityDto.builder()
+        public RoleDto convert(Role source) {
+            return RoleDto.builder()
                     .id(source.getId())
-                    .authority(source.getAuthority())
+                    .role(source.getRole())
                     .build();
         }
     }
@@ -33,11 +33,11 @@ public class UserToDtoConverter implements Converter<User, UserDto> {
                 .isEnabled(source.isEnabled())
                 .username(source.getUsername())
                 .password(source.getPassword())
-                .authorities(this.convert(source.getAuthorities()))
+                .roles(this.convert(source.getRoles()))
                 .build();
     }
 
-    List<AuthorityDto> convert(List<Authority> authorities) {
+    List<RoleDto> convert(List<Role> authorities) {
         AuthorityToDtoConverter converter = new AuthorityToDtoConverter();
         return authorities.stream()
                 .map(converter::convert)

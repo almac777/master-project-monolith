@@ -12,7 +12,6 @@ public class ArticleDtoToEntityConverter implements Converter<ArticleDto, Articl
         return Article.builder()
                 .id(source.getId())
                 .url(source.getUrl())
-                // @todo: Expand upon this
                 .build();
     }
 }

@@ -1,8 +1,8 @@
 package at.ac.fhcampus.master.monolith.fixtures;
 
-import at.ac.fhcampus.master.monolith.auth.dtos.AuthorityDto;
+import at.ac.fhcampus.master.monolith.auth.dtos.RoleDto;
 import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
-import at.ac.fhcampus.master.monolith.auth.entities.Authority;
+import at.ac.fhcampus.master.monolith.auth.entities.Role;
 import at.ac.fhcampus.master.monolith.auth.entities.User;
 
 import java.util.Optional;
@@ -18,7 +18,7 @@ public class UserFixture {
                 .id(1L)
                 .username("username")
                 .password("password")
-                .authority(Authority.builder().id(1L).authority("mockauthority").build())
+                .role(Role.builder().id(1L).role("mockauthority").build())
                 .build();
     }
 
@@ -27,7 +27,7 @@ public class UserFixture {
                 .id(1L)
                 .username("username")
                 .password("password")
-                .authority(AuthorityDto.builder().id(1L).authority("mockauthority").build())
+                .role(RoleDto.builder().id(1L).role("mockauthority").build())
                 .build();
     }
 }
