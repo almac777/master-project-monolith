@@ -33,8 +33,9 @@ public final class DefaultRegistrationService implements RegistrationService {
     public void unregister(Long id) {
         this.userRepository.findById(id)
                 .ifPresentOrElse(
-                        this::removeUser,
-                        () -> { throw new RuntimeException("User not found"); });
+                    this::removeUser,
+                    () -> { throw new RuntimeException("User not found"); }
+                );
     }
 
     private void removeUser(User user) {
