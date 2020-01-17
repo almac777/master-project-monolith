@@ -1,6 +1,5 @@
 package at.ac.fhcampus.master.monolith.auth.dtos;
 
-import at.ac.fhcampus.master.monolith.auth.entities.Authority;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;

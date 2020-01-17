@@ -1,20 +1,15 @@
 package at.ac.fhcampus.master.monolith.auth.services;
 
-import at.ac.fhcampus.master.monolith.auth.entities.Authority;
-import at.ac.fhcampus.master.monolith.auth.entities.User;
 import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

@@ -3,7 +3,6 @@ package at.ac.fhcampus.master.monolith.ratings.services;
 import at.ac.fhcampus.master.monolith.ratings.converter.RatingDtoToEntityConverter;
 import at.ac.fhcampus.master.monolith.ratings.converter.RatingToDtoConverter;
 import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
-import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.repositories.RatingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
