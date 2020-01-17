@@ -2,7 +2,6 @@ package at.ac.fhcampus.master.monolith.auth.services;
 
 import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
