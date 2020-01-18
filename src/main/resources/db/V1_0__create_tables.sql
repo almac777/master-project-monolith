@@ -2,7 +2,7 @@ create sequence hibernate_sequence start with 1 increment by 1;
 
 create table article_ratings
 (
-    id                 bigint not null,
+    id                 bigint not null auto_increment,
     completion_rating  bigint,
     objectivity_rating bigint,
     article_id         bigint,
@@ -12,21 +12,21 @@ create table article_ratings
 
 create table articles
 (
-    id  bigint not null,
+    id  bigint not null auto_increment,
     url varchar(255),
     primary key (id)
 );
 
 create table roles
 (
-    id        bigint not null,
+    id        bigint not null auto_increment,
     role varchar(255),
     primary key (id)
 );
 
 create table users
 (
-    id                         bigint  not null,
+    id                         bigint  not null auto_increment,
     is_account_non_expired     boolean not null,
     is_account_non_locked      boolean not null,
     is_credentials_non_expired boolean not null,

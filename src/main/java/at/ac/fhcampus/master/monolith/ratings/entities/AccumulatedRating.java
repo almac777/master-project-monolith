@@ -1,7 +1,6 @@
 package at.ac.fhcampus.master.monolith.ratings.entities;
 
 import at.ac.fhcampus.master.monolith.articles.entities.Article;
-import at.ac.fhcampus.master.monolith.auth.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,27 +12,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Data
-@Table(name = "article_ratings")
+@Table(name = "accumulated_ratings")
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Rating {
+public class AccumulatedRating {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long objectivityRating;
-    private Long completionRating;
+    private Double objectivityRating;
+    private Double completionRating;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "article_id")
     private Article article;
 

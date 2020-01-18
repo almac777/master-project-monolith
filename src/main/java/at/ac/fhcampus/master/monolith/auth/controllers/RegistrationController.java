@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -22,8 +20,8 @@ import java.util.Optional;
 public final class RegistrationController {
 
     static final String BASE_URL = "/api/v1/registration";
-    static final String REGISTER_USER = "/register";
-    static final String UNREGISTER_USER = "/delete/{userId}";
+    static final String REGISTER_USER = "/";
+    static final String UNREGISTER_USER = "/{userId}";
 
     private final RegistrationService registrationService;
 
@@ -34,15 +32,8 @@ public final class RegistrationController {
 
     @DeleteMapping(UNREGISTER_USER)
     public ResponseEntity<Void> unregister(@PathVariable("userId") Long userId) {
-        HttpStatus status;
-        try {
-            this.registrationService.unregister(userId);
-            status = HttpStatus.OK;
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        return ResponseEntity.<Void>status(status)
+        this.registrationService.unregister(userId);
+        return ResponseEntity.<Void>status(HttpStatus.OK)
                 .body(null);
     }
 

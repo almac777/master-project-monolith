@@ -1,29 +1,73 @@
 package at.ac.fhcampus.master.monolith.ratings.services;
 
+import at.ac.fhcampus.master.monolith.articles.dtos.ArticleDto;
+import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
 import at.ac.fhcampus.master.monolith.ratings.converter.RatingDtoToEntityConverter;
 import at.ac.fhcampus.master.monolith.ratings.converter.RatingToDtoConverter;
 import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
+import at.ac.fhcampus.master.monolith.ratings.entities.AccumulatedRating;
+import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.repositories.RatingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class DefaultRatingService implements RatingService {
+
+    private final AccumulatedRatingService accumulatedRatingService;
 
     private final RatingRepository ratingRepository;
     private final RatingToDtoConverter ratingToDtoConverter;
     private final RatingDtoToEntityConverter ratingDtoToEntityConverter;
 
     @Override
+    public List<RatingDto> byArticle(ArticleDto articleDto) {
+        return Optional.of(articleDto)
+                .map(article -> ratingRepository.findByArticleId(articleDto.getId()))
+                .orElse(new LinkedList<>())
+                .stream()
+                .map(ratingToDtoConverter::convert)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RatingDto> byUser(UserDto userDto) {
+        return Optional.of(userDto)
+                .map(article -> ratingRepository.findByUserId(userDto.getId()))
+                .orElse(new LinkedList<>())
+                .stream()
+                .map(ratingToDtoConverter::convert)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public RatingDto rate(RatingDto ratingDto) {
         return Optional.of(ratingDto)
                 .map(ratingDtoToEntityConverter::convert)
+                .map(this::calculateRating)
                 .map(ratingRepository::save)
                 .map(ratingToDtoConverter::convert)
                 .orElseThrow(() -> new RuntimeException("Rating has not been saved"));
     }
 
+    public Rating calculateRating(Rating rate) {
+        return Optional.of(rate)
+                .map(accumulatedRatingService::addRating)
+                .map(accumulatedRating -> rate)
+                .orElse(null);
+    }
+
+    @Override
+    public List<RatingDto> list() {
+        return this.ratingRepository.findAll()
+                .stream()
+                .map(ratingToDtoConverter::convert)
+                .collect(Collectors.toList());
+    }
 }

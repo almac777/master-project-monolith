@@ -5,6 +5,7 @@ import at.ac.fhcampus.master.monolith.auth.converters.UserToDtoConverter;
 import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
 import at.ac.fhcampus.master.monolith.auth.entities.User;
 import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
+import at.ac.fhcampus.master.monolith.utils.SecurityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public final class DefaultRegistrationService implements RegistrationService {
+
+    private final SecurityService securityService;
 
     private final UserRepository userRepository;
     private final UserToDtoConverter userToDtoConverter;
@@ -31,6 +34,11 @@ public final class DefaultRegistrationService implements RegistrationService {
 
     @Override
     public void unregister(Long id) {
+        var user = this.securityService.loggedInUser().orElse(null);
+        if (user == null || ! user.getId().equals(id)) {
+            throw new RuntimeException("Invalid request");
+        }
+
         this.userRepository.findById(id)
                 .ifPresentOrElse(
                     this::removeUser,

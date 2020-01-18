@@ -1,0 +1,28 @@
+POST localhost:8080/api/v1/ratings/
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+Content-Type: application/json
+
+{
+  "objectivityRating": 10,
+  "completionRating": 10,
+  "user": {
+    "id": 1
+  },
+  "article": {
+    "id": 1
+  }
+}
+
+###
+
+GET localhost:8080/api/v1/ratings/by-user/1
+Content-Type: application/json
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+
+###
+
+GET localhost:8080/api/v1/ratings/by-article/1
+Content-Type: application/json
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+
+###

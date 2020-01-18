@@ -19,7 +19,6 @@ public class ArticleController {
     static final String BASE_URL = "/api/v1/articles";
     private static final String ROOT_URL = "/";
     private static final String SHOW_URL = "/{id}";
-    private static final String REGISTER_URL = "/register";
 
     private final ArticleService articleService;
 
@@ -33,8 +32,8 @@ public class ArticleController {
         return this.articleService.show(id);
     }
 
-    @PostMapping(REGISTER_URL)
-    public ArticleDto register(@RequestBody ArticleDto articleDto) {
+    @PostMapping(ROOT_URL)
+    public ArticleDto save(@RequestBody ArticleDto articleDto) {
         return this.articleService.register(articleDto);
     }
 }

@@ -4,6 +4,7 @@ import at.ac.fhcampus.master.monolith.auth.converters.UserDtoToEntityConverter;
 import at.ac.fhcampus.master.monolith.auth.converters.UserToDtoConverter;
 import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
+import at.ac.fhcampus.master.monolith.utils.SecurityService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,14 +19,17 @@ class DefaultRegistrationServiceTest {
     private UserRepository userRepository;
     private UserToDtoConverter userToDtoConverter;
     private UserDtoToEntityConverter userDtoToEntityConverter;
+    private SecurityService defaultSecurityService;
 
 
     @BeforeEach
     void setup() {
         this.userRepository = mock(UserRepository.class);
         this.userToDtoConverter = mock(UserToDtoConverter.class);
+        this.defaultSecurityService = mock(SecurityService.class);
         this.userDtoToEntityConverter = mock(UserDtoToEntityConverter.class);
         this.defaultRegistrationService = new DefaultRegistrationService(
+                this.defaultSecurityService,
                 this.userRepository,
                 this.userToDtoConverter,
                 this.userDtoToEntityConverter
@@ -51,6 +55,7 @@ class DefaultRegistrationServiceTest {
     @Test
     void unregister() {
         when(this.userRepository.findById(1L)).thenReturn(UserFixture.optionalMockUser());
+        when(this.defaultSecurityService.loggedInUser()).thenReturn(UserFixture.optionalMockUser());
         this.defaultRegistrationService.unregister(1L);
         verify(this.userRepository, times(1)).delete(UserFixture.mockedUser());
     }
