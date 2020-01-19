@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Component
 public class UserDtoToEntityConverter implements Converter<UserDto, User> {
 
-    public class AuthorityDtoToEntityConverter implements Converter<RoleDto, Role> {
+    public class RoleDtoToEntityConverter implements Converter<RoleDto, Role> {
         @Override
         public Role convert(RoleDto source) {
             return Role.builder()
@@ -40,7 +40,7 @@ public class UserDtoToEntityConverter implements Converter<UserDto, User> {
     }
 
     List<Role> convert(List<RoleDto> authorities) {
-        AuthorityDtoToEntityConverter converter = new AuthorityDtoToEntityConverter();
+        RoleDtoToEntityConverter converter = new RoleDtoToEntityConverter();
         return Optional.ofNullable(authorities)
                 .orElse(new LinkedList<>())
                 .stream()
