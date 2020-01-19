@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Component
 public class UserToDtoConverter implements Converter<User, UserDto> {
 
-    public class AuthorityToDtoConverter implements Converter<Role, RoleDto> {
+    public class RoleToDtoConverter implements Converter<Role, RoleDto> {
         @Override
         public RoleDto convert(Role source) {
             return RoleDto.builder()
@@ -38,7 +38,7 @@ public class UserToDtoConverter implements Converter<User, UserDto> {
     }
 
     List<RoleDto> convert(List<Role> authorities) {
-        AuthorityToDtoConverter converter = new AuthorityToDtoConverter();
+        RoleToDtoConverter converter = new RoleToDtoConverter();
         return authorities.stream()
                 .map(converter::convert)
                 .collect(Collectors.toList());
