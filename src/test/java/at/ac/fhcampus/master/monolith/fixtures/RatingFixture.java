@@ -24,5 +24,4 @@ public class RatingFixture {
                 .user(UserFixture.mockedUserDto())
                 .build();
     }
-
 }

@@ -1,4 +1,4 @@
-package at.ac.fhcampus.master.monolith.auth.dtos;
+package at.ac.fhcampus.master.monolith.user.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,5 +13,4 @@ public class RoleDto {
 
     private Long id;
     private String role;
-
 }

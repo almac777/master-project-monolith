@@ -24,7 +24,8 @@ import java.util.List;
 @AllArgsConstructor
 public class Article {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String url;
@@ -34,5 +35,4 @@ public class Article {
 
     @OneToOne(mappedBy = "article")
     private AccumulatedRating accumulatedRating;
-
 }

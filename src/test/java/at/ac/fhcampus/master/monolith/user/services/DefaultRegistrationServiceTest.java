@@ -1,8 +1,8 @@
-package at.ac.fhcampus.master.monolith.auth.services;
+package at.ac.fhcampus.master.monolith.user.services;
 
-import at.ac.fhcampus.master.monolith.auth.converters.UserDtoToEntityConverter;
-import at.ac.fhcampus.master.monolith.auth.converters.UserToDtoConverter;
-import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
+import at.ac.fhcampus.master.monolith.user.converters.UserDtoToEntityConverter;
+import at.ac.fhcampus.master.monolith.user.converters.UserToDtoConverter;
+import at.ac.fhcampus.master.monolith.user.repositories.UserRepository;
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
 import at.ac.fhcampus.master.monolith.utils.SecurityService;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +20,6 @@ class DefaultRegistrationServiceTest {
     private UserToDtoConverter userToDtoConverter;
     private UserDtoToEntityConverter userDtoToEntityConverter;
     private SecurityService defaultSecurityService;
-
 
     @BeforeEach
     void setup() {

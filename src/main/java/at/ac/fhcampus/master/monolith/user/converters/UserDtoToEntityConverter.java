@@ -1,9 +1,9 @@
-package at.ac.fhcampus.master.monolith.auth.converters;
+package at.ac.fhcampus.master.monolith.user.converters;
 
-import at.ac.fhcampus.master.monolith.auth.dtos.RoleDto;
-import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
-import at.ac.fhcampus.master.monolith.auth.entities.Role;
-import at.ac.fhcampus.master.monolith.auth.entities.User;
+import at.ac.fhcampus.master.monolith.user.dtos.RoleDto;
+import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
+import at.ac.fhcampus.master.monolith.user.entities.Role;
+import at.ac.fhcampus.master.monolith.user.entities.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Component
 public class UserDtoToEntityConverter implements Converter<UserDto, User> {
 
-    public class RoleDtoToEntityConverter implements Converter<RoleDto, Role> {
+    public static class RoleDtoToEntityConverter implements Converter<RoleDto, Role> {
         @Override
         public Role convert(RoleDto source) {
             return Role.builder()
@@ -29,10 +29,10 @@ public class UserDtoToEntityConverter implements Converter<UserDto, User> {
     public User convert(UserDto source) {
         return User.builder()
                 .id(source.getId())
-                .isAccountNonExpired(source.isAccountNonExpired())
-                .isAccountNonLocked(source.isAccountNonLocked())
-                .isCredentialsNonExpired(source.isCredentialsNonExpired())
-                .isEnabled(source.isEnabled())
+                .accountNonExpired(source.isAccountNonExpired())
+                .accountNonLocked(source.isAccountNonLocked())
+                .credentialsNonExpired(source.isCredentialsNonExpired())
+                .enabled(source.isEnabled())
                 .username(source.getUsername())
                 .password(source.getPassword())
                 .roles(this.convert(source.getRoles()))
@@ -47,5 +47,4 @@ public class UserDtoToEntityConverter implements Converter<UserDto, User> {
                 .map(converter::convert)
                 .collect(Collectors.toList());
     }
-
 }

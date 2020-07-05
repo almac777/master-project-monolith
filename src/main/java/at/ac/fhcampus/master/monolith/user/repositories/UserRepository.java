@@ -1,6 +1,6 @@
-package at.ac.fhcampus.master.monolith.auth.repositories;
+package at.ac.fhcampus.master.monolith.user.repositories;
 
-import at.ac.fhcampus.master.monolith.auth.entities.User;
+import at.ac.fhcampus.master.monolith.user.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

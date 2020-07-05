@@ -1,6 +1,8 @@
 package at.ac.fhcampus.master.monolith.ratings.services;
 
 import at.ac.fhcampus.master.monolith.articles.entities.Article;
+import at.ac.fhcampus.master.monolith.ratings.converter.AccumulatedRatingToDtoConverter;
+import at.ac.fhcampus.master.monolith.ratings.dtos.AccumulatedRatingDto;
 import at.ac.fhcampus.master.monolith.ratings.entities.AccumulatedRating;
 import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.repositories.AccumulatedRatingRepository;
@@ -9,13 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class AccumulatedRatingService {
 
+    private final AccumulatedRatingToDtoConverter converter;
     private final AccumulatedRatingRepository accumulatedRatingRepository;
     private final RatingRepository ratingRepository;
 
@@ -74,4 +76,9 @@ public class AccumulatedRatingService {
         return accumulatedRatingRepository.save(accumulatedRating);
     }
 
+    public AccumulatedRatingDto showAccumulatedRatingForArticleWithId(Long articleId) {
+        return this.accumulatedRatingRepository.findByArticleId(articleId)
+                .map(converter::convert)
+                .orElseThrow(() -> new RuntimeException("Article ID not found"));
+    }
 }

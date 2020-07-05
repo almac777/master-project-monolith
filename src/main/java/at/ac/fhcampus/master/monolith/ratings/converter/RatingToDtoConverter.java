@@ -3,9 +3,9 @@ package at.ac.fhcampus.master.monolith.ratings.converter;
 import at.ac.fhcampus.master.monolith.articles.converters.ArticleToDtoConverter;
 import at.ac.fhcampus.master.monolith.articles.dtos.ArticleDto;
 import at.ac.fhcampus.master.monolith.articles.entities.Article;
-import at.ac.fhcampus.master.monolith.auth.converters.UserToDtoConverter;
-import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
-import at.ac.fhcampus.master.monolith.auth.entities.User;
+import at.ac.fhcampus.master.monolith.user.converters.UserToDtoConverter;
+import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
+import at.ac.fhcampus.master.monolith.user.entities.User;
 import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
 import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import org.springframework.core.convert.converter.Converter;
@@ -32,5 +32,4 @@ public class RatingToDtoConverter implements Converter<Rating, RatingDto> {
     private UserDto convertUser(User user) {
         return new UserToDtoConverter().convert(user);
     }
-
 }

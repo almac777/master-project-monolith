@@ -8,5 +8,5 @@ create table accumulated_ratings
 );
 
 ALTER TABLE accumulated_ratings
-ADD CONSTRAINT unique_accumulated_rating_per_article
-UNIQUE (article_id);
+    ADD CONSTRAINT unique_accumulated_rating_per_article
+        UNIQUE (article_id);

@@ -1,11 +1,10 @@
 package at.ac.fhcampus.master.monolith.ratings.services;
 
 import at.ac.fhcampus.master.monolith.articles.dtos.ArticleDto;
-import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
+import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
 import at.ac.fhcampus.master.monolith.ratings.converter.RatingDtoToEntityConverter;
 import at.ac.fhcampus.master.monolith.ratings.converter.RatingToDtoConverter;
 import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
-import at.ac.fhcampus.master.monolith.ratings.entities.AccumulatedRating;
 import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.repositories.RatingRepository;
 import lombok.RequiredArgsConstructor;
@@ -69,5 +68,22 @@ public class DefaultRatingService implements RatingService {
                 .stream()
                 .map(ratingToDtoConverter::convert)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public RatingDto update(Long id, RatingDto ratingDto) {
+        var oldRating = this.ratingRepository.findById(id).orElseThrow(() -> new RuntimeException("Rating has not been found"));
+        oldRating.setCompletionRating(ratingDto.getCompletionRating());
+        oldRating.setObjectivityRating(ratingDto.getObjectivityRating());
+        return Optional.of(ratingRepository.save(oldRating))
+                .map(ratingToDtoConverter::convert)
+                .orElseThrow(() -> new RuntimeException("Rating has not been updated"));
+    }
+
+    @Override
+    public void delete(Long id) {
+        var rating = ratingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Rating has not been found"));
+        ratingRepository.delete(rating);
     }
 }

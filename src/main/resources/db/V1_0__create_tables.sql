@@ -19,25 +19,25 @@ create table articles
 
 create table roles
 (
-    id        bigint not null auto_increment,
+    id   bigint not null auto_increment,
     role varchar(255),
     primary key (id)
 );
 
 create table users
 (
-    id                         bigint  not null auto_increment,
-    is_account_non_expired     boolean not null,
-    is_account_non_locked      boolean not null,
-    is_credentials_non_expired boolean not null,
-    is_enabled                 boolean not null,
-    password                   varchar(255),
-    username                   varchar(255),
+    id                      bigint  not null auto_increment,
+    account_non_expired     boolean not null,
+    account_non_locked      boolean not null,
+    credentials_non_expired boolean not null,
+    enabled                 boolean not null,
+    password                varchar(255),
+    username                varchar(255),
     primary key (id)
 );
 
 create table users_roles
 (
-    user_id        bigint not null,
+    user_id bigint not null,
     role_id bigint not null
 );

@@ -33,5 +33,4 @@ public class AccumulatedRating {
     @OneToOne
     @JoinColumn(name = "article_id")
     private Article article;
-
 }

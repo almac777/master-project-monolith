@@ -14,5 +14,4 @@ public class ArticleToDtoConverter implements Converter<Article, ArticleDto> {
                 .url(source.getUrl())
                 .build();
     }
-
 }

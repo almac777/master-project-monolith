@@ -1,7 +1,6 @@
 package at.ac.fhcampus.master.monolith.ratings.dtos;
 
 import at.ac.fhcampus.master.monolith.articles.dtos.ArticleDto;
-import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,11 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RatingDto {
-
+public class AccumulatedRatingDto {
     private Long id;
-    private Long objectivityRating;
-    private Long completionRating;
-    private UserDto user;
+    private Double objectivityRating;
+    private Double completionRating;
     private ArticleDto article;
 }

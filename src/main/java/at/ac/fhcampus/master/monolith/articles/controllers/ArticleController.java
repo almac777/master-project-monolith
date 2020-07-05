@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ArticleController {
     static final String BASE_URL = "/api/v1/articles";
     private static final String ROOT_URL = "/";
-    private static final String SHOW_URL = "/{id}";
+    private static final String ID_URL = "/{id}";
 
     private final ArticleService articleService;
 
@@ -27,7 +28,7 @@ public class ArticleController {
         return this.articleService.list();
     }
 
-    @GetMapping(SHOW_URL)
+    @GetMapping(ID_URL)
     public ArticleDto article(@PathVariable("id") Long id) {
         return this.articleService.show(id);
     }
@@ -35,5 +36,10 @@ public class ArticleController {
     @PostMapping(ROOT_URL)
     public ArticleDto save(@RequestBody ArticleDto articleDto) {
         return this.articleService.register(articleDto);
+    }
+
+    @PutMapping(ID_URL)
+    public ArticleDto update(@PathVariable("id") Long id, @RequestBody ArticleDto articleDto) {
+        return this.articleService.update(id, articleDto);
     }
 }

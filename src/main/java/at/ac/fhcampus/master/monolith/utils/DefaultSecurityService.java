@@ -1,6 +1,6 @@
 package at.ac.fhcampus.master.monolith.utils;
 
-import at.ac.fhcampus.master.monolith.auth.entities.User;
+import at.ac.fhcampus.master.monolith.user.entities.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,5 +17,4 @@ public class DefaultSecurityService implements SecurityService {
                 .map(Authentication::getPrincipal)
                 .map(User.class::cast);
     }
-
 }

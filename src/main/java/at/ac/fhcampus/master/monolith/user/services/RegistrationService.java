@@ -1,11 +1,10 @@
-package at.ac.fhcampus.master.monolith.auth.services;
+package at.ac.fhcampus.master.monolith.user.services;
 
-import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
+import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
 
 public interface RegistrationService {
 
     UserDto registerUser(UserDto userDto);
 
     void unregister(Long id);
-
 }

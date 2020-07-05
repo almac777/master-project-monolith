@@ -1,6 +1,6 @@
-package at.ac.fhcampus.master.monolith.auth.services;
+package at.ac.fhcampus.master.monolith.user.services;
 
-import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
+import at.ac.fhcampus.master.monolith.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

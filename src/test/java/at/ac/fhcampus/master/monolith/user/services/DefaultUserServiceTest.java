@@ -1,6 +1,6 @@
-package at.ac.fhcampus.master.monolith.auth.services;
+package at.ac.fhcampus.master.monolith.user.services;
 
-import at.ac.fhcampus.master.monolith.auth.repositories.UserRepository;
+import at.ac.fhcampus.master.monolith.user.repositories.UserRepository;
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,5 +40,4 @@ class DefaultUserServiceTest {
                 .isThrownBy(() -> defaultUserService.loadUserByUsername("inexistent"))
                 .withMessageContaining("inexistent");
     }
-
 }

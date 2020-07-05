@@ -14,5 +14,4 @@ public class ArticleDto {
     // @todo: Expand upon this
     private Long id;
     private String url;
-
 }

@@ -1,24 +1,29 @@
-DELETE localhost:8080/api/v1/registration/2
-Authorization: Basic dGVzdHVzZXI6cGFzc3dvcmQ=
+DELETE localhost:8080/api/v1/users/remove/3
+Authorization: Basic Ymx1YmJlcjpwYXNzd29yZA==
 
 ###
 
 GET localhost:8080/api/v1/articles/
-Authorization: Basic dGVzdHVzZXI6cGFzc3dvcmQ=
+Authorization: Basic Ymx1YmJlcjpwYXNzd29yZA==
 
 ###
 
-POST localhost:8080/api/v1/registration/
+POST localhost:8080/api/v1/users/registration/
 Content-Type: application/json
-Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 
 {
-  "username": "test",
-  "password": "$2y$12$Sd1o5tbLDccSbm5zGpY8s.LXCFjlFGdVaUane9xf6LFEoyazDTLE6",
-  "isAccountNonExpired": true,
-  "isAccountNonLocked": true,
-  "isCredentialsNonExpired": true,
-  "isEnabled": true
+  "accountNonExpired": true,
+  "accountNonLocked": true,
+  "credentialsNonExpired": true,
+  "enabled": true,
+  "username": "blubber",
+  "password": "$2a$08$43WZ5mMMwBdbdCKdb4rBzOtxfcvDbTBaSj./T0IpGQBvTQFXRyKp6",
+  "roles": [
+    {
+      "id": 3,
+      "role": "USER"
+    }
+  ]
 }
 
 ###

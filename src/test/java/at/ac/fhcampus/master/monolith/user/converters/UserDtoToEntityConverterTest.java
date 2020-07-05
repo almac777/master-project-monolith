@@ -1,4 +1,4 @@
-package at.ac.fhcampus.master.monolith.auth.converters;
+package at.ac.fhcampus.master.monolith.user.converters;
 
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
 import org.junit.jupiter.api.Test;

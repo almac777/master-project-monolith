@@ -1,4 +1,4 @@
-package at.ac.fhcampus.master.monolith.auth.entities;
+package at.ac.fhcampus.master.monolith.user.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,10 +37,10 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-    private boolean isAccountNonExpired;
-    private boolean isAccountNonLocked;
-    private boolean isCredentialsNonExpired;
-    private boolean isEnabled;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
     @Singular
     @ManyToMany(fetch = FetchType.EAGER)

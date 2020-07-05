@@ -1,7 +1,7 @@
 package at.ac.fhcampus.master.monolith.ratings.entities;
 
 import at.ac.fhcampus.master.monolith.articles.entities.Article;
-import at.ac.fhcampus.master.monolith.auth.entities.User;
+import at.ac.fhcampus.master.monolith.user.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +23,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Rating {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long objectivityRating;
@@ -36,5 +37,4 @@ public class Rating {
     @ManyToOne
     @JoinColumn(name = "article_id")
     private Article article;
-
 }

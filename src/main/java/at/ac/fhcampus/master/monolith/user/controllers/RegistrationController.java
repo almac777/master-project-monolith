@@ -1,7 +1,7 @@
-package at.ac.fhcampus.master.monolith.auth.controllers;
+package at.ac.fhcampus.master.monolith.user.controllers;
 
-import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
-import at.ac.fhcampus.master.monolith.auth.services.RegistrationService;
+import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
+import at.ac.fhcampus.master.monolith.user.services.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(RegistrationController.BASE_URL)
 public final class RegistrationController {
 
-    static final String BASE_URL = "/api/v1/registration";
-    static final String REGISTER_USER = "/";
-    static final String UNREGISTER_USER = "/{userId}";
+    static final String BASE_URL = "/api/v1/users";
+    static final String REGISTER_USER = "/registration";
+    static final String UNREGISTER_USER = "/remove/{userId}";
 
     private final RegistrationService registrationService;
 
@@ -36,5 +36,4 @@ public final class RegistrationController {
         return ResponseEntity.<Void>status(HttpStatus.OK)
                 .body(null);
     }
-
 }

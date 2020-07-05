@@ -1,4 +1,4 @@
-package at.ac.fhcampus.master.monolith.auth.dtos;
+package at.ac.fhcampus.master.monolith.user.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,12 +19,11 @@ public class UserDto {
     private String username;
     private String password;
 
-    private boolean isAccountNonExpired;
-    private boolean isAccountNonLocked;
-    private boolean isCredentialsNonExpired;
-    private boolean isEnabled;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
     @Singular
     private List<RoleDto> roles;
-
 }

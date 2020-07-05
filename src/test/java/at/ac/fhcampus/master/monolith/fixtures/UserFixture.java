@@ -1,9 +1,9 @@
 package at.ac.fhcampus.master.monolith.fixtures;
 
-import at.ac.fhcampus.master.monolith.auth.dtos.RoleDto;
-import at.ac.fhcampus.master.monolith.auth.dtos.UserDto;
-import at.ac.fhcampus.master.monolith.auth.entities.Role;
-import at.ac.fhcampus.master.monolith.auth.entities.User;
+import at.ac.fhcampus.master.monolith.user.dtos.RoleDto;
+import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
+import at.ac.fhcampus.master.monolith.user.entities.Role;
+import at.ac.fhcampus.master.monolith.user.entities.User;
 
 import java.util.Optional;
 
