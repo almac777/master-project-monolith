@@ -4,6 +4,7 @@ import at.ac.fhcampus.master.monolith.user.repositories.UserRepository;
 import at.ac.fhcampus.master.monolith.fixtures.UserFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;

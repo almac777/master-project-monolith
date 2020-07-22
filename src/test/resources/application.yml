@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    locations: classpath:/db
+    table: flyway_schema_history
+    clean-on-validation-error: true
+
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:monolith-db
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    tomcat:
+      defaultAutoCommit: false

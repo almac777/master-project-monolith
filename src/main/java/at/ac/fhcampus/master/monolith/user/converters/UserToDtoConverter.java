@@ -4,6 +4,7 @@ import at.ac.fhcampus.master.monolith.user.dtos.RoleDto;
 import at.ac.fhcampus.master.monolith.user.dtos.UserDto;
 import at.ac.fhcampus.master.monolith.user.entities.Role;
 import at.ac.fhcampus.master.monolith.user.entities.User;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
