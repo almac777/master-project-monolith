@@ -54,9 +54,9 @@ public class AccumulatedRatingService {
     public AccumulatedRating addRating(Rating rating) {
         var article = rating.getArticle();
         if (article == null) {
-            throw new RuntimeException("Unexpected error occured");
+            throw new RuntimeException("Unexpected error occurred");
         }
-        var accumulatedRating = article.getAccumulatedRating();
+        var accumulatedRating = accumulatedRatingRepository.findByArticleId(article.getId()).orElse(null);
         if (accumulatedRating == null) {
             accumulatedRating = AccumulatedRating.builder()
                     .article(article)
@@ -79,6 +79,8 @@ public class AccumulatedRatingService {
     public AccumulatedRatingDto showAccumulatedRatingForArticleWithId(Long articleId) {
         return this.accumulatedRatingRepository.findByArticleId(articleId)
                 .map(converter::convert)
-                .orElseThrow(() -> new RuntimeException("Article ID not found"));
+                .orElseThrow(() -> new RuntimeException(
+                        String.format("Article ID %d not found", articleId)
+                ));
     }
 }

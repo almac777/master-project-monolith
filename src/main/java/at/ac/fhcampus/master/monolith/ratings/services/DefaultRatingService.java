@@ -8,6 +8,7 @@ import at.ac.fhcampus.master.monolith.ratings.dtos.RatingDto;
 import at.ac.fhcampus.master.monolith.ratings.entities.Rating;
 import at.ac.fhcampus.master.monolith.ratings.repositories.RatingRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class DefaultRatingService implements RatingService {
@@ -49,8 +51,9 @@ public class DefaultRatingService implements RatingService {
     public RatingDto rate(RatingDto ratingDto) {
         return Optional.of(ratingDto)
                 .map(ratingDtoToEntityConverter::convert)
-                .map(this::calculateRating)
+                .map(this::peekRating)
                 .map(ratingRepository::save)
+                .map(this::calculateRating)
                 .map(ratingToDtoConverter::convert)
                 .orElseThrow(() -> new RuntimeException("Rating has not been saved"));
     }
@@ -60,6 +63,11 @@ public class DefaultRatingService implements RatingService {
                 .map(accumulatedRatingService::addRating)
                 .map(accumulatedRating -> rate)
                 .orElse(null);
+    }
+
+    public Rating peekRating(Rating in) {
+        log.info("{}", in);
+        return in;
     }
 
     @Override

@@ -18,12 +18,7 @@ Content-Type: application/json
   "enabled": true,
   "username": "blubber",
   "password": "$2a$08$43WZ5mMMwBdbdCKdb4rBzOtxfcvDbTBaSj./T0IpGQBvTQFXRyKp6",
-  "roles": [
-    {
-      "id": 3,
-      "role": "USER"
-    }
-  ]
+  "roles": [{"id": 3}]
 }
 
 ###

@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    locations: classpath:/db-psql
+    table: flyway_schema_history
+    clean-on-validation-error: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?current-schema=public
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+    tomcat:
+      defaultAutoCommit: false
