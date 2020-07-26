@@ -1,4 +1,12 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://monolith.cx2m7wlc5woc.eu-central-1.rds.amazonaws.com:5432/postgres?current-schema=public
+    username: postgres
+    password: CHANGEME
+    driverClassName: org.postgresql.Driver
+    tomcat:
+      defaultAutoCommit: false
+
   jpa:
     show-sql: true
     hibernate:
@@ -9,12 +17,3 @@ spring:
     locations: classpath:/db
     table: flyway_schema_history
     clean-on-validation-error: true
-
-  datasource:
-    platform: h2
-    url: jdbc:h2:mem:monolith-db
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
-    tomcat:
-      defaultAutoCommit: false
